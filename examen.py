@@ -21,11 +21,31 @@ print(mediana(valores))
 
 def procesar(fichero,numero):
     lista_alumnos = []
+    cont = 0
     with open(fichero, 'r') as file:
         for linea in file:
             palabras = linea.split()
-            if numero in palabras:
+            for palabra in palabras:
+             n = len(palabras[0])
+             if palabras[0][n-1] == str(numero):
+                cont = 1
                 lista_alumnos.append(linea)
+        if cont == 0:
+            raise ValueError("No hay estudiantes de ese curso")
+             
     return lista_alumnos
-procesar()
-                    
+print(procesar("C:\\Users\\rokoh\\OneDrive\\Escritorio\\python examen\\recuperacion_examen\\recuperacion_examen\\fichero.csv",3))
+
+def combinar(diccionario_nombres_edades,diccionario_nombres_profesiones,diccionario_nombres_sueldos):
+    diccionario_final = {}
+    for values in diccionario_nombres_edades:
+        print(values)
+
+
+
+
+
+diccionario_nombres_edades = {'Ana': 25, 'Juan': 30, 'Maria': 28}
+diccionario_nombres_profesiones = {'Ana': 'Ingeniera', 'Juan': 'Doctor', 'Maria':'Abogada'}
+diccionario_nombres_sueldos = {'Ana': 5000, 'Juan': 7000, 'Maria': 6000}
+combinar(diccionario_nombres_edades,diccionario_nombres_profesiones,diccionario_nombres_sueldos)
