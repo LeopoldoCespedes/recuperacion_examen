@@ -39,13 +39,36 @@ print(procesar("C:\\Users\\rokoh\\OneDrive\\Escritorio\\python examen\\recuperac
 def combinar(diccionario_nombres_edades,diccionario_nombres_profesiones,diccionario_nombres_sueldos):
     diccionario_final = {}
     for values in diccionario_nombres_edades:
-        print(values)
-
-
-
-
-
+         diccionario_final[values] = {
+            'edad': diccionario_nombres_edades[values],
+            'profesión': diccionario_nombres_profesiones[values],
+            'sueldo': diccionario_nombres_sueldos[values]
+        }
+    return diccionario_final
 diccionario_nombres_edades = {'Ana': 25, 'Juan': 30, 'Maria': 28}
 diccionario_nombres_profesiones = {'Ana': 'Ingeniera', 'Juan': 'Doctor', 'Maria':'Abogada'}
 diccionario_nombres_sueldos = {'Ana': 5000, 'Juan': 7000, 'Maria': 6000}
-combinar(diccionario_nombres_edades,diccionario_nombres_profesiones,diccionario_nombres_sueldos)
+print(combinar(diccionario_nombres_edades,diccionario_nombres_profesiones,diccionario_nombres_sueldos))
+
+from collections import defaultdict
+
+def palabra_repetida(nombre_archivo):
+    contador = defaultdict(int)
+    palabra_max = ""
+    with open(nombre_archivo, 'r') as file:
+        for linea in file:
+            palabras = linea.split()
+            for palabra in palabras:
+                contador[palabra] += 1
+        maximo = max(contador.values())
+        for palabra, repeticiones in contador.items():
+            if repeticiones == maximo:
+                palabra_max = palabra
+        return palabra_max
+print(palabra_repetida("C:\\Users\\rokoh\\OneDrive\\Escritorio\\python examen\\recuperacion_examen\\recuperacion_examen\\palabras.txt"))
+
+    
+
+
+
+
